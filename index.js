@@ -1,28 +1,20 @@
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
-require("dotenv").config();
+import express from "express";
+// import ejs from 'ejs'
+import { dirname, join } from 'path'
+import { fileURLToPath } from "url";
+
+import indexRoutes from './routes/index.js'
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-//middleware
-app.use(cors());
-app.use(morgan("dev"));
-app.use(express.json());
+const __dirname = dirname(fileURLToPath(import.meta.url))
+// console.log(__dirname, 'views')
+app.set('views', join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(indexRoutes);
+app.use(express.static(join(__dirname, 'public')))
 
-app.get("/", function (req, res) {
-  res.send("Hello SergioM");
-});
 
-app.post("/user", function (req, res) {
-  //recibir datos por body
-  const { name, lastname, id } = req.body;
-  res.send({
-    name,
-    lastname,
-    id,
-  });
-});
-
-app.listen(port, () => console.log(`servidor en http://localhost:${port}`));
+//--------------------------------------------------------
+app.listen(3000);
+console.log("server 3000");

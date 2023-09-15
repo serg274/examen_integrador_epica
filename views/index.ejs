@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= titulo %>
+  </title>
+ <%- include('partials/headcss') %>
+</head>
+
+<body>
+
+  <%- include('partials/navegacion') %>
+<header class="container d-flex vh-100 justify-content-center align-items-center">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <img src="/img/atardecer.jpg" alt="logo" class="w-50">
+    <h1 class="display-1 my-2 text-uppercase fw-bold gap-5">Historias Increibles</h1>
+    <a href="/publicacion" class="btn btn-primary w-25">Historias</a>
+  </div>
+</header>
+  <%- include('partials/footer') %>
+</body>
+
+</html>
